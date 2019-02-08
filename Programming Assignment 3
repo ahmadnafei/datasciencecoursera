@@ -1,0 +1,38 @@
+From Lines 1:40 approx. are my tries to write the best() function. 
+ 
+#This is a function to calculate the best hospital in terms of a certain outcome.
+#It takes two arguments, reads the data from a certain file, omits NAs, finds the highest number
+#within the vector of the specified outcome, then returns the name of the hospital corresponding
+#to that number.
+
+#Steps to perform. 
+
+#I can subset in three steps: the first one to split the data frame according to states, the second to subset the data frame of a state inside
+#the list, and the third to subset the wanted column. After that, we'll extract the minimum value using min(). After that, I think I should subset
+#data frame of the state to get the hospital name that corresponds to the best hospital. 
+best <- function(state, outcome){
+        all_data <- read.csv("D:/Work Until You Don't Have to Introduce Yourself!/Courses/
+Data Science on Coursera/outcome-of-care-measures.csv")
+        split_data <- split(all_data, all_data$State)
+        valid_state <- !is.na(all_data[state, ])
+        valid_outcome <- !is.na(all_data[ , outcome])
+        if (valid_state & valid_outcome == TRUE){
+                
+        }
+        
+        
+}
+
+best <- function(state, outcome){
+        mydata <- all_data <- read.csv("D:/Work Until You Don't Have to Introduce Yourself!/Courses/Data Science on Coursera/outcome-of-care-measures.csv")
+        mydata_split <<- split(mydata, mydata$State)
+        wanted_state_data <<-mydata_split$state
+        state_out_data <<- wanted_state_data[, state]
+        state_range <<- range(state_out_data)
+        state_out_min <<- state_range[1]
+        #then subset the data for the state to gain a data frame with the names of the best hospitals
+        best_hospital <<- subset(wanted_state_data, outcome == state_out_min)
+        #subset best_hospital to get the hospital names then take the first name of the subsetted vector.
+        best_hospital[1,"Hospital.Name"]
+        
+        }
