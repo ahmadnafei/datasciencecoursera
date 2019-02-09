@@ -1,4 +1,29 @@
-From Lines 1:40 approx. are my tries to write the best() function. 
+#From Lines 1:61 approx. are my tries to write the best() function.
+
+#The first one of the best() is the one that should work: the one with the comment "This vector of outcomes has character values indicating missing data cells written as "Not Available". This renders 
+#the min() function useless. To overcome this issue, we us sub() to substitute "Not Available" with NAs. 
+#This is a function to calculate the best hospital in terms of a certain outcome.
+#It takes two arguments, reads the data from a certain file, finds the lowest number
+#within the vector of the specified outcome, then returns the name of the hospital corresponding
+#to that number.
+
+#The outcome and state variables has to be a character string for the function to work.
+#
+best <- function(state, outcome){
+        all_data <<- read.csv("D:/Work Until You Don't Have to Introduce Yourself!/Courses/Data Science on Coursera/outcome-of-care-measures.csv")
+        split_data <<- split(all_data, all_data$State)
+        state_data <<- split_data$state
+        outcome_vect <<- state_data[,outcome]
+        #This vector of outcomes has character values indicating missing data cells written as "Not Available". This renders 
+        #the min() function useless. To overcome this issue, we us sub() to substitute "Not Available" with NAs. 
+        sub(NA, "Not Available", outcome_vect)
+        best_num <<- min(outcome_vect, na.rm = TRUE)
+        for_return <<- subset(state_data$Hospital.Name, outcome == best_num, na.rm = TRUE)
+        for_return[1]
+        }
+        
+        
+
  
 #This is a function to calculate the best hospital in terms of a certain outcome.
 #It takes two arguments, reads the data from a certain file, omits NAs, finds the highest number
@@ -18,9 +43,7 @@ Data Science on Coursera/outcome-of-care-measures.csv")
         valid_outcome <- !is.na(all_data[ , outcome])
         if (valid_state & valid_outcome == TRUE){
                 
-        }
-        
-        
+        }     
 }
 
 best <- function(state, outcome){
